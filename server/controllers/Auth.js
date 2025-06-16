@@ -1,6 +1,6 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const User = require("../models/User");
-const OTP = require("../models/OTP.js");
+const OTP = require("../models/OTP");
 const jwt = require("jsonwebtoken");
 const otpGenerator = require("otp-generator");
 const mailSender = require("../utils/mailSender");
@@ -56,7 +56,7 @@ exports.signup = async (req, res) => {
 		}
 
 		// Find the most recent OTP for the email
-		const response = await OTP.find({ email:email }).sort({ createdAt: -1 }).limit(1);
+		const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
 		console.log(response);
 		if (response.length === 0) {
 			// OTP not found for the email
@@ -142,7 +142,7 @@ exports.login = async (req, res) => {
 		// Generate JWT token and Compare Password
 		if (await bcrypt.compare(password, user.password)) {
 			const token = jwt.sign(
-				{ email: user.email, id: user._id, accountType: user.accountType},
+				{ email: user.email, id: user._id, accountType: user.accountType },
 				process.env.JWT_SECRET,
 				{
 					expiresIn: "24h",
@@ -179,7 +179,7 @@ exports.login = async (req, res) => {
 	}
 };
 // Send OTP For Email Verification
-exports.sendOTP = async (req, res) => {
+exports.sendotp = async (req, res) => {
 	try {
 		const { email } = req.body;
 
@@ -211,7 +211,7 @@ exports.sendOTP = async (req, res) => {
 				upperCaseAlphabets: false,
 			});
 		}
-		const otpPayload = { email: email, otp: otp };
+		const otpPayload = { email, otp };
 		const otpBody = await OTP.create(otpPayload);
 		console.log("OTP Body", otpBody);
 		res.status(200).json({

@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 
 exports.resetPasswordToken = async (req, res) => {
@@ -33,9 +33,10 @@ exports.resetPasswordToken = async (req, res) => {
 			`Your Link for email verification is ${url}. Please click this url to reset your password.`
 		);
 
-		return res.status(200).json({
+		res.json({
 			success: true,
-			message:"Email Sent Successfully, Please Check Your Email to Continue Further",
+			message:
+				"Email Sent Successfully, Please Check Your Email to Continue Further",
 		});
 	} catch (error) {
 		return res.json({
@@ -72,10 +73,7 @@ exports.resetPassword = async (req, res) => {
 		const encryptedPassword = await bcrypt.hash(password, 10);
 		await User.findOneAndUpdate(
 			{ token: token },
-			{ password: encryptedPassword ,
-				token: undefined,
-				resetPasswordExpires: undefined,
-			},
+			{ password: encryptedPassword },
 			{ new: true }
 		);
 		res.json({
