@@ -12,10 +12,10 @@ import {
 } from "../../../../../services/operations/courseDetailsAPI"
 import { setCourse, setStep } from "../../../../../slices/courseSlice"
 import { COURSE_STATUS } from "../../../../../utils/constants"
-import IconBtn from "../../../../common/IconBtn"
+import IconBtn from "../../../../Common/IconBtn"
 import Upload from "../Upload"
 import ChipInput from "./ChipInput"
-import RequirementsField from "./RequirementField"
+import RequirementsField from "./RequirementsField"
 
 export default function CourseInformationForm() {
   const {
@@ -226,7 +226,7 @@ export default function CourseInformationForm() {
           Course Category <sup className="text-pink-200">*</sup>
         </label>
         <select
-          {...register("courseCategory", { required: false })}
+          {...register("courseCategory", { required: true })}
           defaultValue=""
           id="courseCategory"
           className="form-style w-full"
@@ -241,11 +241,11 @@ export default function CourseInformationForm() {
               </option>
             ))}
         </select>
-        {/* {errors.courseCategory && (
+        {errors.courseCategory && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">
             Course Category is required
           </span>
-        )} */}
+        )}
       </div>
       {/* Course Tags */}
       <ChipInput
