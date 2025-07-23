@@ -1,31 +1,125 @@
-# React & Tailwind CSS Starter Pack
+# 📚 StudyNotion - EdTech Platform
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+![StudyNotion Logo](public/logo.png)
 
-## Usage
+A comprehensive EdTech platform built with the MERN stack, enabling seamless course creation, enrollment, and learning experiences. StudyNotion provides a robust learning management system for both instructors and students.
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+## 🌟 Features
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+### For Students
+- 📖 **Course Enrollment**: Browse and enroll in various courses
+- 💰 **Secure Payments**: Integrated Razorpay payment gateway
+- 📊 **Progress Tracking**: Track learning progress with visual indicators
+- 🎥 **Video Learning**: Stream course videos with playback controls
+- ⭐ **Rating & Reviews**: Rate courses and provide feedback
+- 🛒 **Shopping Cart**: Add multiple courses to cart before purchase
+- 👤 **Profile Management**: Manage personal information and preferences
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+### For Instructors
+- 📝 **Course Creation**: Create comprehensive courses with multiple sections
+- 📹 **Content Upload**: Upload videos, images, and documents
+- 📈 **Analytics Dashboard**: Track student enrollment and revenue
+- 💵 **Revenue Tracking**: View earnings and payment analytics
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+### General Features
+- 🔐 **Secure Authentication**: JWT-based authentication with OTP verification
+- 📱 **Responsive Design**: Mobile-first responsive design
+- 🌙 **Modern UI**: Clean and intuitive user interface
+- 📧 **Email Notifications**: Automated email confirmations and updates
+- 🔍 **Course Search**: Advanced search and filtering capabilities
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+## 🛠️ Tech Stack
 
-## Contributing
+### Frontend
+- **React 18.2** - Modern React with hooks and functional components
+- **Redux Toolkit** - State management
+- **React Router DOM** - Client-side routing
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Hook Form** - Form handling and validation
+- **Chart.js** - Data visualization
+- **React Icons** - Icon library
+- **Swiper** - Touch slider component
 
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web application framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB object modeling
+- **JWT** - JSON Web Tokens for authentication
+- **Bcrypt** - Password hashing
+- **Nodemailer** - Email sending
+- **Multer** - File upload handling
+
+### Third-Party Integrations
+- **Cloudinary** - Media storage and management
+- **Razorpay** - Payment gateway integration
+- **Gmail SMTP** - Email service
+
+
+
+## ⚙️ Environment Variables
+
+### Frontend (.env)
+Create a `.env` file in the root directory:
+```env
+REACT_APP_BASE_URL=http://localhost:4000/api/v1
+```
+
+### Backend (server/.env)
+Create a `.env` file in the server directory:
+```env
+# Database Configuration
+MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/StudyNotionDB
+
+# JWT Secret
+JWT_SECRET=your_super_secret_jwt_key
+
+# Email Configuration (Gmail SMTP)
+MAIL_HOST=smtp.gmail.com
+MAIL_USER=your_email@gmail.com
+MAIL_PASS=your_gmail_app_password
+
+# Cloudinary Configuration
+CLOUD_NAME=your_cloudinary_cloud_name
+API_KEY=your_cloudinary_api_key
+API_SECRET=your_cloudinary_api_secret
+FOLDER_NAME=StudyNotion
+
+# Razorpay Configuration
+RAZORPAY_KEY=rzp_test_your_razorpay_key
+RAZORPAY_SECRET=your_razorpay_secret
+
+# Server Configuration
+PORT=4000
+```
+## 📁 Project Structure
+
+```
+Study-Notion/
+│
+├── public/                 # Static files
+├── src/                    # Frontend source code
+│   ├── assets/            # Images, logos, and static assets
+│   ├── components/        # Reusable components
+│   │   ├── Common/        # Common components (Navbar, Footer)
+│   │   └── core/          # Feature-specific components
+│   ├── data/              # Static data and configurations
+│   ├── hooks/             # Custom React hooks
+│   ├── pages/             # Page components
+│   ├── services/          # API calls and external services
+│   ├── slices/            # Redux slices
+│   └── utils/             # Utility functions
+│
+├── server/                 # Backend source code
+│   ├── config/            # Database and service configurations
+│   ├── controllers/       # Route controllers
+│   ├── middleware/        # Custom middleware
+│   ├── models/            # Database models
+│   ├── routes/            # API routes
+│   ├── utils/             # Utility functions
+│   └── mail/              # Email templates
+│
+└── README.md              # Project documentation
+```
+
+Made with ❤️ by Kavya Sharma
